@@ -5,40 +5,42 @@ class DivFunc:
     @staticmethod
     # TODO: Search for all divisors
     # TODO: Поиск всех делителей
-    def divisor(x: int) -> list:
-        a = []
+    def divisor(number: int) -> list:
+        result = []
         i = 1
-        while i ** 2 <= x:
-            if i ** 2 == x:
-                a.append(i)
-            elif x % i == 0:
-                a += [i, x // i]
+        while i ** 2 <= number:
+            if i ** 2 == number:
+                result.append(i)
+            elif number % i == 0:
+                result += [i, number // i]
             i += 1
-        a.sort()
-        return a
+        return result
 
     @staticmethod
     # TODO: Finding nontrivial divisors
     # TODO: Поиск нетривиальных делителей
-    def nontrivial_divisor(x: int) -> list:
-        a = []
+    def nontrivial_divisor(number: int) -> list:
+        result = []
         i = 2
-        while i ** 2 <= x:
-            if i ** 2 == x:
-                a.append(i)
-            elif x % i == 0:
-                a += [i, x // i]
+        while i ** 2 <= number:
+            if i ** 2 == number:
+                result.append(i)
+            elif number % i == 0:
+                result += [i, number // i]
             i += 1
-        a.sort()
-        return a
+        return result
 
     @staticmethod
     # TODO: Checking a number for simplicity
     # TODO: Проверка числа на простоту
-    def is_prime(n: int) -> bool:
-        for i in range(2, (n // 2) + 1):
-            if n % i == 0:
+    def is_prime(number: int) -> bool:
+        if number < 2:
+            return False
+        i = 2
+        while i * i <= number:
+            if number % i == 0:
                 return False
+            i += 1
         return True
 
     @staticmethod
