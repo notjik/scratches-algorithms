@@ -1,3 +1,9 @@
+"""
+author: notjik
+license: MIT License
+
+copyright: (C) 2023 notjik
+"""
 from time import time
 
 __all__ = ['DivFunc',
