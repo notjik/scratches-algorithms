@@ -4,20 +4,20 @@ license: MIT License
 
 copyright: (C) 2023 notjik
 """
-from time import time
+from time import perf_counter
 
-__all__ = ['DivFunc',
+__all__ = ['NumbersProperties',
            'NumeralSystem',
            'PerformanceTracking']
 
 
-class DivFunc:
+class NumbersProperties:
     @staticmethod
     # TODO: Search for all divisors
     # TODO: Поиск всех делителей
-    def divisor(number: int) -> list:
+    def divisors(number: int, nontrivial: bool = False) -> list:
         result = []
-        i = 1
+        i = 1 if not nontrivial else 2
         while i ** 2 <= number:
             if i ** 2 == number:
                 result.append(i)
@@ -27,18 +27,10 @@ class DivFunc:
         return result
 
     @staticmethod
-    # TODO: Finding nontrivial divisors
-    # TODO: Поиск нетривиальных делителей
-    def nontrivial_divisor(number: int) -> list:
-        result = []
-        i = 2
-        while i ** 2 <= number:
-            if i ** 2 == number:
-                result.append(i)
-            elif number % i == 0:
-                result += [i, number // i]
-            i += 1
-        return result
+    # TODO: Finding the n-th term of the Fibonacci number
+    # TODO: Нахождение n-го члена числа Фибоначчи
+    def fibonacci(number: int) -> int:
+        return round((((1 + 5 ** 0.5) / 2) ** number - ((1 - 5 ** 0.5) / 2) ** number) / 5 ** 0.5)
 
     @staticmethod
     # TODO: Checking a number for simplicity
@@ -62,8 +54,8 @@ class DivFunc:
 
 class NumeralSystem:
     @staticmethod
-    # TODO: Transfer to another number system
-    # TODO: Перевод в другую систему счисления
+    # TODO: Conversion from decimal to any other number system (up to 36)
+    # TODO: Перевод из десятичной системы счисления в любую другую (до 36)
     def to_base(number: int, base: int) -> str:
         alphabet = '0123456789abcdefghijklmnopqrstuvwxyz'
         result = alphabet[number % base]
@@ -77,9 +69,9 @@ class PerformanceTracking:
     # TODO: Initialization of the class, the beginning of the countdown
     # TODO: Инициализация класса, начало отсчёта
     def __init__(self) -> None:
-        self.start = time()
+        self.start = perf_counter()
 
     # TODO: Object deletion, end of countdown
     # TODO: Удаление объекта, окончание отсчёта
     def __del__(self) -> None:
-        print('\nThe program was completed in {} second!'.format(time() - self.start))
+        print('\nThe program was completed in {} second!'.format(perf_counter() - self.start))

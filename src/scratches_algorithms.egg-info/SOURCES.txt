@@ -1,0 +1,11 @@
+LICENSE.md
+README.md
+setup.cfg
+setup.py
+src/scratches_algorithms/__init__.py
+src/scratches_algorithms/algorithms.py
+src/scratches_algorithms/utils.py
+src/scratches_algorithms.egg-info/PKG-INFO
+src/scratches_algorithms.egg-info/SOURCES.txt
+src/scratches_algorithms.egg-info/dependency_links.txt
+src/scratches_algorithms.egg-info/top_level.txt

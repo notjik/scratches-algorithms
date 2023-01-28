@@ -1,3 +1,24 @@
+Metadata-Version: 2.1
+Name: scratches-algorithms
+Version: 0.0.2
+Summary: Python package with classical algorithms and simple utilities
+Home-page: https://github.com/notjik/scratches-algorithms
+Download-URL: https://github.com/notjik/scratches-algorithms/dist/scratches-algorithms-0.0.2.tar.gz
+Author: notjik
+Author-email: notjik@yandex.ru
+License: MIT License
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+
 ###### scratches-algorithms
 
 ![PyPI Version](https://img.shields.io/pypi/v/scratches-algorithms?color=success) ![Python Version](https://img.shields.io/pypi/pyversions/scratches-algorithms?color=informational) ![License](https://img.shields.io/pypi/l/scratches-algorithms?color=red) 

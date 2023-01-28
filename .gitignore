@@ -2,4 +2,3 @@ __pycache__/
 .idea/
 venv/
 .env
-src/scratches_algorithms.egg-info/

@@ -6,11 +6,8 @@
 import os
 
 from setuptools import setup, find_packages
-from dotenv import load_dotenv
 
-load_dotenv()
-
-version = os.getenv('VERSION', default='0.0.0.dev0')
+version = '0.0.2'
 
 with open('README.md', encoding='utf-8') as f:
     long_description = f.read()
@@ -29,9 +26,9 @@ setup(
     long_description_content_type='text/markdown',
 
     url='https://github.com/notjik/scratches-algorithms',
-    download_url=os.getenv('DOWNLOAD_URL'),
+    download_url='https://github.com/notjik/scratches-algorithms/dist/scratches-algorithms-0.0.2.tar.gz',
 
-    license='MIT License, see LICENSE file',
+    license='MIT License',
 
     package_dir={'': 'src'},
     packages=find_packages('src', include=[
@@ -44,7 +41,6 @@ setup(
         'Intended Audience :: Developers',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
