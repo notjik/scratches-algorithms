@@ -14,10 +14,11 @@ class Sort:
     @staticmethod
     # TODO: Bubble sorting method (https://sortvisualizer.com/bubblesort/)
     # TODO: Метод сортировки пузырьком (https://sortvisualizer.com/bubblesort/)
-    def bubble(array: list[int | float | str] | tuple[int | float | str] | str,
+    def bubble(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str,
                reverse: bool = False,
-               alg: Callable[[int | float | str, int | float | str], bool] = lambda x, y: x < y) \
-            -> list[int | float | str] | tuple[int | float | str] | str:
+               alg: Callable[[int | float | str | tuple | list, int | float | str | tuple | list], bool] =
+               lambda x, y: x < y) \
+            -> list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str:
         tp = type(array)
         if tp != list:
             array = list(array)
@@ -30,10 +31,11 @@ class Sort:
     @staticmethod
     # TODO: Shaker sorting method (https://sortvisualizer.com/shakersort/)
     # TODO: Метод сортировки шейкером (https://sortvisualizer.com/shakersort/)
-    def shaker(array: list[int | float | str] | tuple[int | float | str] | str,
+    def shaker(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str,
                reverse: bool = False,
-               alg: Callable[[int | float | str, int | float | str], bool] = lambda x, y: x < y) \
-            -> list[int | float | str] | tuple[int | float | str] | str:
+               alg: Callable[[int | float | str | tuple | list, int | float | str | tuple | list], bool] =
+               lambda x, y: x < y) \
+            -> list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str:
         tp = type(array)
         if tp != list:
             array = list(array)
@@ -52,10 +54,11 @@ class Sort:
     @staticmethod
     # TODO: Insertion sorting method (https://sortvisualizer.com/insertionsort/)
     # TODO: Метод сортировки вставками (https://sortvisualizer.com/insertionsort/)
-    def insertion(array: list[int | float | str] | tuple[int | float | str] | str,
+    def insertion(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str,
                   reverse: bool = False,
-                  alg: Callable[[int | float | str, int | float | str], bool] = lambda x, y: x < y) \
-            -> list[int | float | str] | tuple[int | float | str] | str:
+                  alg: Callable[[int | float | str | tuple | list, int | float | str | tuple | list], bool] =
+                  lambda x, y: x < y) \
+            -> list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str:
         tp = type(array)
         if tp != list:
             array = list(array)
@@ -71,10 +74,11 @@ class Sort:
     @staticmethod
     # TODO: Selection sorting method (https://sortvisualizer.com/selectionsort/)
     # TODO: Метод сортировки выборкой (https://sortvisualizer.com/selectionsort/)
-    def selection(array: list[int | float | str] | tuple[int | float | str] | str,
+    def selection(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str,
                   reverse: bool = False,
-                  alg: Callable[[int | float | str, int | float | str], bool] = lambda x, y: x < y) \
-            -> list[int | float | str] | tuple[int | float | str] | str:
+                  alg: Callable[[int | float | str | tuple | list, int | float | str | tuple | list], bool] =
+                  lambda x, y: x < y) \
+            -> list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str:
         tp = type(array)
         if tp != list:
             array = list(array)
@@ -105,10 +109,11 @@ class Sort:
     @staticmethod
     # TODO: Merge sorting method (https://sortvisualizer.com/mergesort/)
     # TODO: Метод сортировки слиянием (https://sortvisualizer.com/mergesort/)
-    def merge(array: list[int | float | str] | tuple[int | float | str] | str,
+    def merge(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str,
               reverse: bool = False,
-              alg: Callable[[int | float | str, int | float | str], bool] = lambda x, y: x < y) \
-            -> list[int | float | str] | tuple[int | float | str] | str:
+              alg: Callable[[int | float | str | tuple | list, int | float | str | tuple | list], bool] =
+              lambda x, y: x < y) \
+            -> list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str:
         tp = type(array)
         if tp != list:
             array = list(array)
@@ -142,11 +147,12 @@ class Sort:
     @staticmethod
     # TODO: Hoare's sorting method (https://sortvisualizer.com/quicksort/)
     # TODO: Метод сортировки Хоара (https://sortvisualizer.com/quicksort/)
-    def quick(array: list[int | float | str] | tuple[int | float | str] | str,
+    def quick(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str,
               start: int = 0,
               end: int | None = None,
               reverse: bool = False,
-              alg: Callable[[int | float | str, int | float | str], bool] = lambda x, y: x < y) \
+              alg: Callable[[int | float | str | tuple | list, int | float | str | tuple | list], bool] =
+              lambda x, y: x < y) \
             -> list[int | float | str] | tuple[int | float | str] | str:
         def partition(array: list,
                       start: int,

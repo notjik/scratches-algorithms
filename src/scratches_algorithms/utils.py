@@ -33,7 +33,7 @@ class NumbersProperties:
         return round((((1 + 5 ** 0.5) / 2) ** number - ((1 - 5 ** 0.5) / 2) ** number) / 5 ** 0.5)
 
     @staticmethod
-    # TODO: Checking a number for simplicity
+    # TODO: Checking a number for prime
     # TODO: Проверка числа на простоту
     def is_prime(number: int) -> bool:
         if number < 2:
