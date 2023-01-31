@@ -7,7 +7,7 @@ import os
 
 from setuptools import setup, find_packages
 
-version = '0.0.3'
+version = '0.0.4'
 
 with open('README.md', encoding='utf-8') as f:
     long_description = f.read()

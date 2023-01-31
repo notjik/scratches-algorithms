@@ -14,7 +14,7 @@ class Sort:
     @staticmethod
     # TODO: Bubble sorting method (https://sortvisualizer.com/bubblesort/)
     # TODO: Метод сортировки пузырьком (https://sortvisualizer.com/bubblesort/)
-    def bubble(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str,
+    def bubble(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str, *,
                reverse: bool = False,
                alg: Callable[[int | float | str | tuple | list, int | float | str | tuple | list], bool] =
                lambda x, y: x < y) \
@@ -54,7 +54,7 @@ class Sort:
     @staticmethod
     # TODO: Insertion sorting method (https://sortvisualizer.com/insertionsort/)
     # TODO: Метод сортировки вставками (https://sortvisualizer.com/insertionsort/)
-    def insertion(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str,
+    def insertion(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str, *,
                   reverse: bool = False,
                   alg: Callable[[int | float | str | tuple | list, int | float | str | tuple | list], bool] =
                   lambda x, y: x < y) \
@@ -74,7 +74,7 @@ class Sort:
     @staticmethod
     # TODO: Selection sorting method (https://sortvisualizer.com/selectionsort/)
     # TODO: Метод сортировки выборкой (https://sortvisualizer.com/selectionsort/)
-    def selection(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str,
+    def selection(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str, *,
                   reverse: bool = False,
                   alg: Callable[[int | float | str | tuple | list, int | float | str | tuple | list], bool] =
                   lambda x, y: x < y) \
@@ -93,7 +93,7 @@ class Sort:
     @staticmethod
     # TODO: Counting sorting method (https://www.cs.usfca.edu/~galles/visualization/CountingSort.html)
     # TODO: Метод сортировки подсчётом (https://www.cs.usfca.edu/~galles/visualization/CountingSort.html)
-    def counting(array: list[int | float] | tuple[int | float],
+    def counting(array: list[int | float] | tuple[int | float], *,
                  reverse: bool = False) -> list[int | float] | tuple[int | float]:
         tp = type(array)
         array_init = [0] * (max(array) + 1)
@@ -109,7 +109,7 @@ class Sort:
     @staticmethod
     # TODO: Merge sorting method (https://sortvisualizer.com/mergesort/)
     # TODO: Метод сортировки слиянием (https://sortvisualizer.com/mergesort/)
-    def merge(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str,
+    def merge(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str, *,
               reverse: bool = False,
               alg: Callable[[int | float | str | tuple | list, int | float | str | tuple | list], bool] =
               lambda x, y: x < y) \
@@ -149,7 +149,7 @@ class Sort:
     # TODO: Метод сортировки Хоара (https://sortvisualizer.com/quicksort/)
     def quick(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str,
               start: int = 0,
-              end: int | None = None,
+              end: int | None = None, *,
               reverse: bool = False,
               alg: Callable[[int | float | str | tuple | list, int | float | str | tuple | list], bool] =
               lambda x, y: x < y) \
@@ -183,7 +183,7 @@ class Find:
     # TODO: Linear search
     # TODO: Линейный поиск
     def linear(array: list[int | float | str] | tuple[int | float | str] | str,
-               element: int | float | str,
+               element: int | float | str, *,
                reverse: bool = False) -> int | None:
         for i in range(len(array)) if not reverse else range(len(array) - 1, -1, -1):
             if array[i] == element:
@@ -214,11 +214,10 @@ class Find:
 
 if __name__ == '__main__':
     from timeit import timeit
-    from random import randint, choices
+    from random import randint
 
     l: int = 10
     array: list[int] = [randint(0, 1000) for r in range(l)]
-    # array = ''.join(choices(''.join(chr(i) for i in range(65, 91)), k=l))
     operations: int = 100
 
     print('Bubble:')
