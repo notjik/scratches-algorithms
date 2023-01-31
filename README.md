@@ -29,30 +29,30 @@ pip install scratches-algorithms
 ```
 
 ## Structure
->  + [algorithms](https://github.com/notjik/scratches-algorithms/blob/master/src/scratches_algorithms/algorithms.py)
+> + [algorithms](https://github.com/notjik/scratches-algorithms/blob/master/src/scratches_algorithms/algorithms.py)
 >   + Sort
->      + bubble
->      + shaker
->      + insertion
->      + selection
->      + counting
->      + merge
->      + quick
->    + Find
->      + linear
->      + binary
->  + [utils](https://github.com/notjik/scratches-algorithms/blob/master/src/scratches_algorithms/utils.py)
->    + NumbersProperties
->      + divisors
->      + fibonacci
->      + is_prime
->      + is_square
->    + NumeralSystem
->      + to_base
->    + PerformanceTracking
->      + \_\_init__
->      + \_\_del__
->      + func_timer
+>     + bubble
+>     + shaker
+>     + insertion
+>     + selection
+>     + counting
+>     + merge
+>     + quick
+>   + Find
+>     + linear
+>     + binary
+> + [utils](https://github.com/notjik/scratches-algorithms/blob/master/src/scratches_algorithms/utils.py)
+>   + NumbersProperties
+>     + divisors
+>     + fibonacci
+>     + is_prime
+>     + is_square
+>   + NumeralSystem
+>     + to_base
+>   + PerformanceTracking
+>     + \_\_init__
+>     + \_\_del__
+>     + func_timer
 
 </div>
 
@@ -78,7 +78,7 @@ pip install scratch-algorithms
 ```
 
 ## Структура
->  + [algorithms](https://github.com/notjik/scratches-algorithms/blob/master/src/scratches_algorithms/algorithms.py)
+> + [algorithms](https://github.com/notjik/scratches-algorithms/blob/master/src/scratches_algorithms/algorithms.py)
 >   + Sort
 >     + bubble
 >     + shaker
@@ -87,9 +87,9 @@ pip install scratch-algorithms
 >     + counting
 >     + merge
 >     + quick
->    + Find
->      + linear
->      + binary
+>   + Find
+>     + linear
+>     + binary
 > + [utils](https://github.com/notjik/scratches-algorithms/blob/master/src/scratches_algorithms/utils.py)
 >   + NumbersProperties
 >     + divisors
