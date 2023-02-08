@@ -44,6 +44,7 @@ pip install scratches-algorithms
 > + [utils](https://github.com/notjik/scratches-algorithms/blob/master/src/scratches_algorithms/utils.py)
 >   + NumbersProperties
 >     + divisors
+>     + count_divisors
 >     + fibonacci
 >     + is_prime
 >     + is_square

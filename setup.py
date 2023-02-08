@@ -7,7 +7,7 @@ import os
 
 from setuptools import setup, find_packages
 
-version = '0.0.5'
+version = '0.1.0'
 
 with open('README.md', encoding='utf-8') as f:
     long_description = f.read()
@@ -26,7 +26,7 @@ setup(
     long_description_content_type='text/markdown',
 
     url='https://github.com/notjik/scratches-algorithms',
-    download_url='https://github.com/notjik/scratches-algorithms/dist/scratches-algorithms-0.0.2.tar.gz',
+    download_url='https://github.com/notjik/scratches-algorithms/dist/scratches-algorithms-0.1.0.tar.gz',
 
     license='MIT License',
 
