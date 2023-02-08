@@ -4,7 +4,7 @@ license: MIT License
 
 copyright: (C) 2023 notjik
 """
-from typing import Callable
+from typing import Callable, Sequence
 
 __all__ = ['Sort',
            'Find']
@@ -20,13 +20,13 @@ class Sort:
                lambda x, y: x < y) \
             -> list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str:
         tp = type(array)
-        if tp != list:
+        if not isinstance(array, list):
             array = list(array)
         for i in range(len(array) - 1):
             for j in range(len(array) - i - 1):
                 if alg(array[j + 1], array[j]) if not reverse else alg(array[j], array[j + 1]):
                     array[j + 1], array[j] = array[j], array[j + 1]
-        return ''.join(array) if tp == str else tp(array)
+        return ''.join(array) if tp == str else tp(array) if tp != set else list(array)
 
     @staticmethod
     # TODO: Shaker sorting method (https://sortvisualizer.com/shakersort/)
@@ -37,7 +37,7 @@ class Sort:
                lambda x, y: x < y) \
             -> list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str:
         tp = type(array)
-        if tp != list:
+        if not isinstance(array, list):
             array = list(array)
         left, right = 0, len(array) - 1
         while left <= right:
@@ -60,12 +60,12 @@ class Sort:
                   lambda x, y: x < y) \
             -> list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str:
         tp = type(array)
-        if tp != list:
+        if not isinstance(array, list):
             array = list(array)
         for i in range(1, len(array)):
             x = array[i]
             j = i - 1
-            while j >= 0 and alg(x, array[j]) if not reverse else alg(array[j], x):
+            while j >= 0 and alg(x, array[j]) if not reverse else j >= 0 and alg(array[j], x):
                 array[j + 1] = array[j]
                 j -= 1
             array[j + 1] = x
@@ -80,7 +80,7 @@ class Sort:
                   lambda x, y: x < y) \
             -> list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str:
         tp = type(array)
-        if tp != list:
+        if not isinstance(array, list):
             array = list(array)
         for i in range(len(array)):
             tmp = i
@@ -115,19 +115,16 @@ class Sort:
               lambda x, y: x < y) \
             -> list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str:
         tp = type(array)
-        if tp != list:
+        if not isinstance(array, list):
             array = list(array)
-        if len(array) <= 1:
+        if len(array) > 1:
             median = len(array) // 2
-            if not reverse:
-                left, right = array[:median], array[median:]
-            else:
-                left, right = array[median:], array[:median]
-            Sort.merge(array=left, reverse=reverse)
-            Sort.merge(array=right, reverse=reverse)
+            left, right = array[:median], array[median:]
+            Sort.merge(array=left, reverse=reverse, alg=alg)
+            Sort.merge(array=right, reverse=reverse, alg=alg)
             i = j = k = 0
             while i < len(left) and j < len(right):
-                if alg(left[i], right[j]):
+                if alg(left[i], right[j]) if not reverse else alg(right[j], left[i]):
                     array[k] = left[i]
                     i += 1
                 else:
@@ -166,7 +163,9 @@ class Sort:
             return pivot
 
         tp = type(array)
-        if tp != list:
+        if not isinstance(array, list):
+            if isinstance(array, dict):
+                raise ValueError('Dictionary is an invalid type for sorting')
             array = list(array)
         if end is None:
             end = len(array) - 1
@@ -182,25 +181,25 @@ class Find:
     @staticmethod
     # TODO: Linear search
     # TODO: Линейный поиск
-    def linear(array: list[int | float | str] | tuple[int | float | str] | str,
-               element: int | float | str, *,
-               reverse: bool = False) -> int | None:
+    def linear(array: list[int | float | str | list | tuple] | tuple[int | float | str | list | tuple] | str,
+               element: int | float | str | list | tuple, *,
+               reverse: bool = False) -> int:
         for i in range(len(array)) if not reverse else range(len(array) - 1, -1, -1):
             if array[i] == element:
                 return i
-        return None
+        return -1
 
     @staticmethod
     # TODO: Binary search (sorted collection)
     # TODO: Бинарный поиск (отсортированной коллекции)
-    def binary(array: list[int | float | str] | tuple[int | float | str] | str,
-               element: int | float | str,
+    def binary(array: list[int | float | str | list | tuple] | tuple[int | float | str | list | tuple] | str,
+               element: int | float | str | list | tuple,
                start: int = 0,
                end: int | None = None) -> int | None:
         if end is None:
             end = len(array) - 1
-        i = None
-        while (start <= end) and (i is None):
+        i = -1
+        while (start <= end) and (i == -1):
             median = (start + end) // 2
             if array[median] == element:
                 i = median
@@ -257,7 +256,7 @@ if __name__ == '__main__':
 
     print('Merge:')
     print('Before: {}'.format(array))
-    print('After: {}'.format(Sort.bubble(array[:])))
+    print('After: {}'.format(Sort.merge(array[:])))
     print('{} operations per {}\n'.format(operations, timeit('Sort.merge({})'.format(array[:]) if type(array) != str
                                                              else 'Sort.merge("{}")'.format(array[:]),
                                                              'from __main__ import Sort', number=operations)))
