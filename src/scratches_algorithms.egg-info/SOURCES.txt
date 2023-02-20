@@ -3,6 +3,7 @@ README.md
 setup.cfg
 setup.py
 src/scratches_algorithms/__init__.py
+src/scratches_algorithms/_validator.py
 src/scratches_algorithms/algorithms.py
 src/scratches_algorithms/utils.py
 src/scratches_algorithms.egg-info/PKG-INFO

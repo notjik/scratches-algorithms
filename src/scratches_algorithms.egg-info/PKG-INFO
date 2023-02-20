@@ -1,9 +1,9 @@
 Metadata-Version: 2.1
 Name: scratches-algorithms
-Version: 0.1.0
+Version: 0.1.2
 Summary: Python package with classical algorithms and simple utilities
 Home-page: https://github.com/notjik/scratches-algorithms
-Download-URL: https://github.com/notjik/scratches-algorithms/dist/scratches-algorithms-0.1.0.tar.gz
+Download-URL: https://github.com/notjik/scratches-algorithms/dist/scratches-algorithms-0.1.2.tar.gz
 Author: notjik
 Author-email: notjik@yandex.ru
 License: MIT License
@@ -75,6 +75,7 @@ pip install scratches-algorithms
 >     + \_\_init__
 >     + \_\_del__
 >     + func_timer
+>     + get_size
 
 </div>
 

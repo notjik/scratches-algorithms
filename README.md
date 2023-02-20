@@ -54,6 +54,7 @@ pip install scratches-algorithms
 >     + \_\_init__
 >     + \_\_del__
 >     + func_timer
+>     + get_size
 
 </div>
 

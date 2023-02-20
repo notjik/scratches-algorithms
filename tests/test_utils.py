@@ -1,39 +1,55 @@
+"""
+A module for testing package utilities.
+
+-----
+
+:author: notjik
+:license: MIT License
+:copyright: (c) 2023 notjik
+"""
+
 from unittest import TestCase
 from src.scratches_algorithms import utils
 
 
 class TestDivisors(TestCase):
     def test_equal(self):
-        self.assertEqual(utils.NumbersProperties.divisors(3335),
-                         [1, 3335, 5, 667, 23, 145, 29, 115])
-        self.assertEqual(utils.NumbersProperties.divisors(3335,
-                                                          nontrivial=True),
-                         [5, 667, 23, 145, 29, 115])
-        self.assertEqual(utils.NumbersProperties.divisors(3335,
-                                                          prime=True),
-                         [5, 23, 29])
-        self.assertEqual(utils.NumbersProperties.divisors(3335,
-                                                          integer=True),
-                         [1, 3335, 5, 667, 23, 145, 29, 115, -1, -3335, -5, -667, -23, -145, -29, -115])
-        self.assertEqual(utils.NumbersProperties.divisors(3335,
-                                                          nontrivial=True,
-                                                          integer=True),
-                         [5, 667, 23, 145, 29, 115, -5, -667, -23, -145, -29, -115])
-        self.assertEqual(utils.NumbersProperties.divisors(-3335),
-                         [1, 3335, 5, 667, 23, 145, 29, 115])
-        self.assertEqual(utils.NumbersProperties.divisors(-3335,
-                                                          nontrivial=True),
-                         [5, 667, 23, 145, 29, 115])
-        self.assertEqual(utils.NumbersProperties.divisors(-3335,
-                                                          prime=True),
-                         [5, 23, 29])
-        self.assertEqual(utils.NumbersProperties.divisors(-3335,
-                                                          integer=True),
-                         [1, 3335, 5, 667, 23, 145, 29, 115, -1, -3335, -5, -667, -23, -145, -29, -115])
-        self.assertEqual(utils.NumbersProperties.divisors(-3335,
-                                                          nontrivial=True,
-                                                          integer=True),
-                         [5, 667, 23, 145, 29, 115, -5, -667, -23, -145, -29, -115])
+        self.assertCountEqual(utils.NumbersProperties.divisors(3335),
+                              [1, 5, 23, 29, 115, 145, 667, 3335])
+        self.assertCountEqual(utils.NumbersProperties.divisors(3335,
+                                                               nontrivial=True),
+                              [5, 23, 29, 115, 145, 667])
+        self.assertCountEqual(utils.NumbersProperties.divisors(64,
+                                                               prime=True),
+                              [2])
+        self.assertCountEqual(utils.NumbersProperties.divisors(64,
+                                                               all_prime=True),
+                              [2, 2, 2, 2, 2, 2])
+        self.assertCountEqual(utils.NumbersProperties.divisors(3335,
+                                                               prime=True),
+                              [5, 23, 29])
+        self.assertCountEqual(utils.NumbersProperties.divisors(3335,
+                                                               integer=True),
+                              [-3335, -667, -145, -115, -29, -23, -5, -1, 1, 5, 23, 29, 115, 145, 667, 3335])
+        self.assertCountEqual(utils.NumbersProperties.divisors(3335,
+                                                               nontrivial=True,
+                                                               integer=True),
+                              [-667, -145, -115, -29, -23, -5, 5, 23, 29, 115, 145, 667])
+        self.assertCountEqual(utils.NumbersProperties.divisors(-3335),
+                              [1, 5, 23, 29, 115, 145, 667, 3335])
+        self.assertCountEqual(utils.NumbersProperties.divisors(-3335,
+                                                               nontrivial=True),
+                              [5, 23, 29, 115, 145, 667])
+        self.assertCountEqual(utils.NumbersProperties.divisors(-3335,
+                                                               prime=True),
+                              [5, 23, 29])
+        self.assertCountEqual(utils.NumbersProperties.divisors(-3335,
+                                                               integer=True),
+                              [-3335, -667, -145, -115, -29, -23, -5, -1, 1, 5, 23, 29, 115, 145, 667, 3335])
+        self.assertCountEqual(utils.NumbersProperties.divisors(-3335,
+                                                               nontrivial=True,
+                                                               integer=True),
+                              [-667, -145, -115, -29, -23, -5, 5, 23, 29, 115, 145, 667])
 
     def test_raises(self):
         self.assertRaises(ZeroDivisionError,
@@ -53,6 +69,21 @@ class TestDivisors(TestCase):
                           utils.NumbersProperties.divisors,
                           3335,
                           prime=True,
+                          integer=True)
+        self.assertRaises(ValueError,
+                          utils.NumbersProperties.divisors,
+                          3335,
+                          prime=True,
+                          all_prime=True)
+        self.assertRaises(ValueError,
+                          utils.NumbersProperties.divisors,
+                          3335,
+                          all_prime=True,
+                          nontrivial=True)
+        self.assertRaises(ValueError,
+                          utils.NumbersProperties.divisors,
+                          3335,
+                          all_prime=True,
                           integer=True)
 
 
@@ -108,6 +139,21 @@ class TestCountDivisors(TestCase):
                           utils.NumbersProperties.count_divisors,
                           3335,
                           prime=True,
+                          integer=True)
+        self.assertRaises(ValueError,
+                          utils.NumbersProperties.count_divisors,
+                          3335,
+                          prime=True,
+                          all_prime=True)
+        self.assertRaises(ValueError,
+                          utils.NumbersProperties.count_divisors,
+                          3335,
+                          all_prime=True,
+                          nontrivial=True)
+        self.assertRaises(ValueError,
+                          utils.NumbersProperties.count_divisors,
+                          3335,
+                          all_prime=True,
                           integer=True)
 
 
@@ -348,4 +394,3 @@ class TestToBase(TestCase):
                           12415,
                           30,
                           bits=-8)
-
