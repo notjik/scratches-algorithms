@@ -1,10 +1,15 @@
 """
-author: notjik
-license: MIT License
+A module with customizable sorting and search algorithms.
 
-copyright: (C) 2023 notjik
+-----
+
+:author: notjik
+:license: MIT License
+:copyright: (c) 2023 notjik
 """
-from typing import Callable, Sequence
+from typing import Callable
+
+from ._validator import _is_valid_sequence, _is_valid_bool
 
 __all__ = ['Sort',
            'Find']
@@ -12,13 +17,20 @@ __all__ = ['Sort',
 
 class Sort:
     @staticmethod
-    # TODO: Bubble sorting method (https://sortvisualizer.com/bubblesort/)
-    # TODO: Метод сортировки пузырьком (https://sortvisualizer.com/bubblesort/)
     def bubble(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str, *,
                reverse: bool = False,
                alg: Callable[[int | float | str | tuple | list, int | float | str | tuple | list], bool] =
                lambda x, y: x < y) \
             -> list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str:
+        """
+        Bubble sorting method (https://sortvisualizer.com/bubblesort/)
+        :param array: a sequence of elements from the numbers or strings to be filled in, or the same sequences that need to be sorted
+        :param reverse: optional boolean value to determine whether to perform reverse sorting
+        :param alg: optional callable object that defines 2 variables and interacts with them to pass new logic for processing numbers
+        :return: a sorted sequence based on the passed parameters
+        """
+        _is_valid_sequence(array)
+        _is_valid_bool()
         tp = type(array)
         if not isinstance(array, list):
             array = list(array)
@@ -29,13 +41,19 @@ class Sort:
         return ''.join(array) if tp == str else tp(array) if tp != set else list(array)
 
     @staticmethod
-    # TODO: Shaker sorting method (https://sortvisualizer.com/shakersort/)
-    # TODO: Метод сортировки шейкером (https://sortvisualizer.com/shakersort/)
     def shaker(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str,
                reverse: bool = False,
                alg: Callable[[int | float | str | tuple | list, int | float | str | tuple | list], bool] =
                lambda x, y: x < y) \
             -> list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str:
+        """
+        Shaker sorting method (https://sortvisualizer.com/shakersort/)
+        :param array: a sequence of elements from the numbers or strings to be filled in, or the same sequences that need to be sorted
+        :param reverse: optional boolean value to determine whether to perform reverse sorting
+        :param alg: optional callable object that defines 2 variables and interacts with them to pass new logic for processing numbers
+        :return: a sorted sequence based on the passed parameters
+        """
+        _is_valid_sequence(array)
         tp = type(array)
         if not isinstance(array, list):
             array = list(array)
@@ -52,15 +70,23 @@ class Sort:
         return ''.join(array) if tp == str else tp(array)
 
     @staticmethod
-    # TODO: Insertion sorting method (https://sortvisualizer.com/insertionsort/)
-    # TODO: Метод сортировки вставками (https://sortvisualizer.com/insertionsort/)
     def insertion(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str, *,
                   reverse: bool = False,
                   alg: Callable[[int | float | str | tuple | list, int | float | str | tuple | list], bool] =
                   lambda x, y: x < y) \
             -> list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str:
+        """
+        Insertion sorting method (https://sortvisualizer.com/insertionsort/)
+        :param array: a sequence of elements from the numbers or strings to be filled in, or the same sequences that need to be sorted
+        :param reverse: optional boolean value to determine whether to perform reverse sorting
+        :param alg: optional callable object that defines 2 variables and interacts with them to pass new logic for processing numbers
+        :return: a sorted sequence based on the passed parameters
+        """
+        _is_valid_sequence(array)
         tp = type(array)
         if not isinstance(array, list):
+            if isinstance(array, dict):
+                raise ValueError('Dictionary is an invalid type for sorting')
             array = list(array)
         for i in range(1, len(array)):
             x = array[i]
@@ -72,15 +98,23 @@ class Sort:
         return ''.join(array) if tp == str else tp(array)
 
     @staticmethod
-    # TODO: Selection sorting method (https://sortvisualizer.com/selectionsort/)
-    # TODO: Метод сортировки выборкой (https://sortvisualizer.com/selectionsort/)
     def selection(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str, *,
                   reverse: bool = False,
                   alg: Callable[[int | float | str | tuple | list, int | float | str | tuple | list], bool] =
                   lambda x, y: x < y) \
             -> list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str:
+        """
+        Selection sorting method (https://sortvisualizer.com/selectionsort/)
+        :param array: a sequence of elements from the numbers or strings to be filled in, or the same sequences that need to be sorted
+        :param reverse: optional boolean value to determine whether to perform reverse sorting
+        :param alg: optional callable object that defines 2 variables and interacts with them to pass new logic for processing numbers
+        :return: a sorted sequence based on the passed parameters
+        """
+        _is_valid_sequence(array)
         tp = type(array)
         if not isinstance(array, list):
+            if isinstance(array, dict):
+                raise ValueError('Dictionary is an invalid type for sorting')
             array = list(array)
         for i in range(len(array)):
             tmp = i
@@ -91,10 +125,15 @@ class Sort:
         return ''.join(array) if tp == str else tp(array)
 
     @staticmethod
-    # TODO: Counting sorting method (https://www.cs.usfca.edu/~galles/visualization/CountingSort.html)
-    # TODO: Метод сортировки подсчётом (https://www.cs.usfca.edu/~galles/visualization/CountingSort.html)
     def counting(array: list[int | float] | tuple[int | float], *,
                  reverse: bool = False) -> list[int | float] | tuple[int | float]:
+        """
+        Counting sorting method (https://www.cs.usfca.edu/~galles/visualization/CountingSort.html)
+        :param array: a sequence of elements from the compared numbers that need to be sorted
+        :param reverse: optional boolean value to determine whether to perform reverse sorting
+        :return: a sorted sequence based on passed parameters
+        """
+        _is_valid_sequence(array, closed=[str])
         tp = type(array)
         array_init = [0] * (max(array) + 1)
         result = []
@@ -107,15 +146,23 @@ class Sort:
         return tp(result)
 
     @staticmethod
-    # TODO: Merge sorting method (https://sortvisualizer.com/mergesort/)
-    # TODO: Метод сортировки слиянием (https://sortvisualizer.com/mergesort/)
     def merge(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str, *,
               reverse: bool = False,
               alg: Callable[[int | float | str | tuple | list, int | float | str | tuple | list], bool] =
               lambda x, y: x < y) \
             -> list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str:
+        """
+        Merge sorting method (https://sortvisualizer.com/mergesort/)
+        :param array: a sequence of elements from the numbers or strings to be filled in, or the same sequences that need to be sorted
+        :param reverse: optional boolean value to determine whether to perform reverse sorting
+        :param alg: optional callable object that defines 2 variables and interacts with them to pass new logic for processing numbers
+        :return: a sorted sequence based on the passed parameters
+        """
+        _is_valid_sequence(array)
         tp = type(array)
         if not isinstance(array, list):
+            if isinstance(array, dict):
+                raise ValueError('Dictionary is an invalid type for sorting')
             array = list(array)
         if len(array) > 1:
             median = len(array) // 2
@@ -142,8 +189,6 @@ class Sort:
         return ''.join(array) if tp == str else tp(array)
 
     @staticmethod
-    # TODO: Hoare's sorting method (https://sortvisualizer.com/quicksort/)
-    # TODO: Метод сортировки Хоара (https://sortvisualizer.com/quicksort/)
     def quick(array: list[int | float | str | tuple | list] | tuple[int | float | str | tuple | list] | str,
               start: int = 0,
               end: int | None = None, *,
@@ -151,6 +196,17 @@ class Sort:
               alg: Callable[[int | float | str | tuple | list, int | float | str | tuple | list], bool] =
               lambda x, y: x < y) \
             -> list[int | float | str] | tuple[int | float | str] | str:
+        """
+        Hoare's sorting method — Quicksort (https://sortvisualizer.com/quicksort/)
+        :param array: a sequence of elements from the numbers or strings to be filled in, or the same sequences that need to be sorted
+        :param start: an optional integer, the value from which to start sorting
+        :param end: optional integer, the value on which to end the sorting
+        :param reverse: optional boolean value to determine whether to perform reverse sorting
+        :param alg: optional callable object that defines 2 variables and interacts with them to pass new logic for processing numbers
+        :return: a sorted sequence based on the passed parameters
+        """
+        _is_valid_sequence(array)
+
         def partition(array: list,
                       start: int,
                       end: int):
@@ -179,36 +235,51 @@ class Sort:
 
 class Find:
     @staticmethod
-    # TODO: Linear search
-    # TODO: Линейный поиск
     def linear(array: list[int | float | str | list | tuple] | tuple[int | float | str | list | tuple] | str,
-               element: int | float | str | list | tuple, *,
+               element: int | float | complex | str | list | tuple, *,
                reverse: bool = False) -> int:
+        """
+        Linear search
+        :param array: the sequence in which you need to find the desired element
+        :param element: a number, symbol, or sequence whose index needs to be found
+        :param reverse: optional boolean value if you need to find the character from the end
+        :return: an integer of the index of occurrence of the desired value, if the number is not found, -1 is output
+        """
+        _is_valid_sequence(array)
         for i in range(len(array)) if not reverse else range(len(array) - 1, -1, -1):
             if array[i] == element:
                 return i
         return -1
 
     @staticmethod
-    # TODO: Binary search (sorted collection)
-    # TODO: Бинарный поиск (отсортированной коллекции)
     def binary(array: list[int | float | str | list | tuple] | tuple[int | float | str | list | tuple] | str,
                element: int | float | str | list | tuple,
                start: int = 0,
                end: int | None = None) -> int | None:
+        """
+        Binary search (sorted sequence)
+        :param array: the SORTED sequence in which you need to find the element
+        :param element: a number being compared, symbol or sequence whose index needs to be found
+        :param start: optional integer, the value to start the search with
+        :param end: optional integer, the value on which to end the search
+        :return: an integer of the index of the appearance of the desired value or the one on which it will have to stand
+        """
+        _is_valid_sequence(array)
         if end is None:
             end = len(array) - 1
-        i = -1
-        while (start <= end) and (i == -1):
+        result = 0
+        while start <= end:
             median = (start + end) // 2
             if array[median] == element:
-                i = median
+                result = median
+                break
+            elif element < array[median]:
+                end = median - 1
+                result = median
             else:
-                if element < array[median]:
-                    end = median - 1
-                else:
-                    start = median + 1
-        return i
+                start = median + 1
+                result = start
+        return result
 
 
 if __name__ == '__main__':
@@ -247,7 +318,7 @@ if __name__ == '__main__':
                                                              else 'Sort.selection("{}")'.format(array[:]),
                                                              'from __main__ import Sort', number=operations)))
 
-    if type(array) != str:
+    if not isinstance(array, str):
         print('Counting:')
         print('Before: {}'.format(array))
         print('After: {}'.format(Sort.counting(array[:])))

@@ -1,3 +1,12 @@
+"""
+A module for testing the algorithms of the package.
+
+-----
+
+:author: notjik
+:license: MIT License
+:copyright: (c) 2023 notjik
+"""
 from unittest import TestCase
 from src.scratches_algorithms import algorithms
 
@@ -546,14 +555,26 @@ class TestBinaryFind(TestCase):
                                                 3),
                          2)
         self.assertEqual(algorithms.Find.binary([1, 2, 3, 4, 5, 6],
+                                                0),
+                         0)
+        self.assertEqual(algorithms.Find.binary([1, 3, 4, 5, 6, 7],
+                                                2),
+                         1)
+        self.assertEqual(algorithms.Find.binary([1, 2, 3, 4, 5, 6],
                                                 9),
-                         -1)
+                         6)
+        self.assertEqual(algorithms.Find.binary([1, 2, 3, 5, 6, 7],
+                                                4),
+                         3)
         self.assertEqual(algorithms.Find.binary(['a', 'b', 'c', 'd', 'e', 'f'],
                                                 'e'),
                          4)
         self.assertEqual(algorithms.Find.binary(['a', 'b', 'c', 'd', 'e', 'f'],
                                                 'g'),
-                         -1)
+                         6)
+        self.assertEqual(algorithms.Find.binary(['a', 'b', 'd', 'e', 'f', 'g'],
+                                                'c'),
+                         2)
 
     def test_raises(self):
         self.assertRaises(TypeError,
